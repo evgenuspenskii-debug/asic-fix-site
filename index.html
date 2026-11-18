@@ -1,131 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASIC-FIX — Профессиональный ремонт ASIC-майнеров</title>
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0284c7;
-            --green: #22c55e;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Шапка */
-        header { padding: 20px 0; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 800; color: var(--accent); letter-spacing: 1px; }
-        .logo span { color: var(--text); }
-        .header-phone { color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; }
-
-        /* Первый экран */
-        .hero { padding: 60px 0; text-align: center; }
-        .hero h1 { font-size: 36px; margin-bottom: 16px; line-height: 1.2; }
-        .hero p { color: var(--muted); font-size: 18px; max-width: 650px; margin: 0 auto 30px; }
-        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.2s; }
-        .btn-tg { background-color: var(--accent); color: #0f172a; }
-        .btn-tg:hover { background-color: var(--accent-hover); color: #fff; }
-        .btn-wa { background-color: var(--green); color: #0f172a; }
-        .btn-wa:hover { opacity: 0.9; }
-
-        /* Блоки */
-        section { padding: 40px 0; }
-        h2 { font-size: 28px; margin-bottom: 24px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 24px; border-radius: 12px; border: 1px solid #334155; }
-        .card h3 { color: var(--accent); margin-bottom: 10px; font-size: 20px; }
-        .card p { color: var(--muted); font-size: 15px; }
-
-        /* Прайс */
-        .price-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; }
-        .price-table td { padding: 16px 20px; border-bottom: 1px solid #334155; }
-        .price-table tr:last-child td { border-bottom: none; }
-        .price-val { text-align: right; font-weight: 700; color: var(--accent); white-space: nowrap; }
-
-        /* Подвал */
-        footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 14px; border-top: 1px solid #334155; margin-top: 40px; }
-        @media (max-width: 600px) { .hero h1 { font-size: 28px; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASIC-FIX — Ремонт ASIC-майнеров</title>
+<style>
+:root{--bg:#0b1120;--card:rgba(30,41,59,0.88);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--green:#22c55e;--max:#7c3aed;--avito:#00aaff}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+body{background:var(--bg);color:var(--text);line-height:1.6;position:relative;overflow-x:hidden}
+.bg-board{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 10%,rgba(56,189,248,0.16),transparent 60%)}
+.container{max-width:1000px;margin:0 auto;padding:0 20px}
+header{padding:20px 0;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:800;color:var(--accent)}.logo span{color:var(--text)}
+.phone{color:var(--text);text-decoration:none;font-weight:600;font-size:18px}
+.hero{padding:60px 0;text-align:center}
+.hero h1{font-size:36px;margin-bottom:16px;line-height:1.2}
+.hero p{color:var(--muted);font-size:18px;max-width:650px;margin:0 auto 30px}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{padding:16px 20px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;display:inline-flex;flex-direction:column;align-items:center;gap:8px;min-width:165px;transition:.2s}
+.btn:hover{opacity:.9;transform:translateY(-2px)}.btn svg{width:28px;height:28px}
+.tg{background:var(--accent);color:#0f172a}.wa{background:var(--green);color:#0f172a}
+.mx{background:var(--max);color:#fff}.av{background:var(--avito);color:#fff}
+section{padding:40px 0}
+h2{font-size:28px;margin-bottom:24px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--card);backdrop-filter:blur(6px);padding:24px;border-radius:12px;border:1px solid rgba(56,189,248,0.2)}
+.card h3{color:var(--accent);margin-bottom:10px;font-size:20px}.card p{color:var(--muted);font-size:15px}
+table{width:100%;border-collapse:collapse;background:var(--card);backdrop-filter:blur(6px);border-radius:12px;overflow:hidden;border:1px solid rgba(56,189,248,0.2)}
+td{padding:16px 20px;border-bottom:1px solid #334155}tr:last-child td{border-bottom:none}
+.val{text-align:right;font-weight:700;color:var(--accent);white-space:nowrap}
+footer{text-align:center;padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid #334155;margin-top:40px}
+@media(max-width:600px){.hero h1{font-size:28px}.btn{width:calc(50% - 7px);min-width:unset;padding:14px 8px}}
+</style>
 </head>
 <body>
 
+<svg class="bg-board">
+  <defs>
+    <pattern id="asic" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#38bdf8" stroke-opacity="0.14" stroke-width="1.2">
+        <path d="M0 20h30l10 10h20M120 100H90L80 90H60M20 0v30l10 10v20M100 120V90L90 80V60"/>
+        <rect x="45" y="45" width="30" height="30" rx="3" stroke-width="1.5"/>
+        <path d="M52 45v-6M60 45v-6M68 45v-6M52 75v6M60 75v6M68 75v6M45 52h-6M45 60h-6M45 68h-6M75 52h6M75 60h6M75 68h6"/>
+        <circle cx="30" cy="20" r="2.5" fill="#38bdf8" fill-opacity="0.25"/>
+        <circle cx="90" cy="100" r="2.5" fill="#38bdf8" fill-opacity="0.25"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#asic)"/>
+</svg>
+
 <div class="container">
-    <header>
-        <div class="logo">ASIC<span>-FIX</span></div>
-        <!-- ЗАМЕНИТЕ НОМЕР ТЕЛЕФОНА -->
-        <a href="tel:+79990000000" class="header-phone">+7 (999) 000-00-00</a>
-    </header>
+  <header>
+    <div class="logo">ASIC<span>-FIX</span></div>
+    <a href="tel:+79990000000" class="phone">+7 (999) 000-00-00</a>
+  </header>
 
-    <section class="hero">
-        <!-- ЗАМЕНИТЕ ГОРОД -->
-        <h1>Срочный ремонт ASIC-майнеров в Москве и по всей РФ</h1>
-        <p>Компонентный ремонт хэш-плат, блоков питания и контрольных плат Bitmain Antminer, Whatsminer, Avalon. Бесплатная диагностика и гарантия на работы.</p>
-        <div class="btn-group">
-            <!-- ЗАМЕНИТЕ ССЫЛКУ НА ВАШ TELEGRAM -->
-            <a href="https://t.me" target="_blank" class="btn btn-tg">Написать в Telegram</a>
-            <!-- ЗАМЕНИТЕ НОМЕР ДЛЯ WHATSAPP -->
-            <a href="https://wa.me" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-        </div>
-    </section>
+  <section class="hero">
+    <h1>Срочный ремонт ASIC-майнеров в Москве и по всей РФ</h1>
+    <p>Компонентный ремонт хэш-плат, блоков питания и контрольных плат Bitmain Antminer, Whatsminer, Avalon. Бесплатная диагностика и гарантия на работы.</p>
+    <div class="btns">
+      <a href="https://t.me" target="_blank" class="btn tg">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.25l-1.97 9.29c-.15.66-.54.82-1.09.51l-3-2.21-1.45 1.39c-.16.16-.29.29-.6.29l.22-3.05 5.56-5.02c.24-.21-.05-.33-.37-.12l-6.87 4.33-2.96-.92c-.64-.2-.65-.64.13-.95l11.57-4.46c.54-.2 1.01.13.83.92z"/></svg>
+        <span>Написать в Telegram</span>
+      </a>
+      <a href="https://max.ru" target="_blank" class="btn mx">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.75 1.38 5.21 3.55 6.84-.16 1.39-.74 2.74-1.45 3.63-.21.26-.02.64.31.59 1.83-.28 3.69-.99 4.91-1.74.86.21 1.76.33 2.68.33 5.52 0 10-4.03 10-9S17.52 2 12 2zm4.5 12.5h-1.8v-4.2l-2.1 3.1h-1.2l-2.1-3.1v4.2H7.5v-7h1.9l2.6 3.9 2.6-3.9h1.9v7z"/></svg>
+        <span>Написать в MAX</span>
+      </a>
+      <a href="https://wa.me" target="_blank" class="btn wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15l-1.3 4.75 4.88-1.28A10 10 0 1 0 12 2zm5.5 14.1c-.23.65-1.35 1.24-1.88 1.32-.49.07-1.1.1-1.78-.11-2.98-.96-4.92-3.98-5.07-4.18-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.03-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.05.91 2.2.08.15.13.32.03.52-.1.2-.15.32-.3.5-.15.17-.31.38-.45.51-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.65-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.08.12.08.72-.15 1.37z"/></svg>
+        <span>Написать в WhatsApp</span>
+      </a>
+      <a href="https://avito.ru" target="_blank" class="btn av">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8.5" r="4.5" fill="#97CF26"/><circle cx="16.5" cy="7" r="3" fill="#00AAFF"/><circle cx="16" cy="15.5" r="5" fill="#FF6163"/><circle cx="7.5" cy="16.5" r="2.5" fill="#A169F7"/></svg>
+        <span>Мы на Авито</span>
+      </a>
+    </div>
+  </section>
 
-    <section>
-        <h2>Почему выбирают нас</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Профессиональное стенды</h3>
-                <p>Используем специализированные тестеры и осциллографы для точного поиска неисправных чипов и цепей питания.</p>
-            </div>
-            <div class="card">
-                <h3>Чипы в наличии</h3>
-                <p>Собственный склад оригинальных ASIC-чипов и комплектующих для популярных моделей S19, S21, M30S, M50.</p>
-            </div>
-            <div class="card">
-                <h3>Работа с регионами</h3>
-                <p>Принимаем оборудование через СДЭК. Делаем видеофиксацию приемки, ремонта и теста хешрейта перед отправкой.</p>
-            </div>
-        </div>
-    </section>
+  <section>
+    <h2>Почему выбирают нас</h2>
+    <div class="grid">
+      <div class="card"><h3>Профессиональные стенды</h3><p>Используем специализированные тестеры и осциллографы для точного поиска неисправных чипов и цепей питания.</p></div>
+      <div class="card"><h3>Чипы в наличии</h3><p>Собственный склад оригинальных ASIC-чипов и комплектующих для моделей S19, S21, M30S, M50 и других.</p></div>
+      <div class="card"><h3>Работа с регионами</h3><p>Принимаем оборудование через СДЭК. Делаем видеофиксацию приемки, ремонта и теста хешрейта перед отправкой.</p></div>
+    </div>
+  </section>
 
-    <section>
-        <h2>Ориентировочный прайс-лист</h2>
-        <!-- ОТРЕДАКТИРУЙТЕ ЦЕНЫ ПОД СЕБЯ -->
-        <table class="price-table">
-            <tr>
-                <td>Диагностика хэш-платы или блока питания (при ремонте у нас)</td>
-                <td class="price-val">0 ₽</td>
-            </tr>
-            <tr>
-                <td>Ремонт цепи питания / замена обвязки хэш-платы</td>
-                <td class="price-val">от 2 500 ₽</td>
-            </tr>
-            <tr>
-                <td>Замена неисправных ASIC-чипов (без учета стоимости чипа)</td>
-                <td class="price-val">от 3 000 ₽</td>
-            </tr>
-            <tr>
-                <td>Ремонт блока питания (APW9, APW12, P21, P221 и др.)</td>
-                <td class="price-val">от 3 500 ₽</td>
-            </tr>
-            <tr>
-                <td>Комплексная чистка, ультразвуковая мойка и замена термопасты</td>
-                <td class="price-val">от 2 000 ₽</td>
-            </tr>
-        </table>
-    </section>
+  <section>
+    <h2>Ориентировочный прайс-лист</h2>
+    <table>
+      <tr><td>Диагностика хэш-платы или блока питания (при ремонте у нас)</td><td class="val">0 ₽</td></tr>
+      <tr><td>Ремонт цепи питания / замена обвязки хэш-платы</td><td class="val">от 2 500 ₽</td></tr>
+      <tr><td>Замена неисправных ASIC-чипов (без учета стоимости чипа)</td><td class="val">от 3 000 ₽</td></tr>
+      <tr><td>Ремонт блока питания (APW9, APW12, P21, P221 и др.)</td><td class="val">от 3 500 ₽</td></tr>
+      <tr><td>Комплексная чистка, ультразвуковая мойка и замена термопасты</td><td class="val">от 2 000 ₽</td></tr>
+    </table>
+  </section>
 
-    <footer>
-        <!-- ЗАМЕНИТЕ АДРЕС И ГРАФИК -->
-        <p>Адрес мастерской: г. Москва, ул. Примерная, д. 1 | Ежедневно с 10:00 до 20:00</p>
-        <p style="margin-top: 8px;">© 2026 ASIC-FIX. Ремонт оборудования для майнинга.</p>
-    </footer>
+  <footer>
+    <p>Адрес мастерской: г. Москва, ул. Примерная, д. 1 | Ежедневно с 10:00 до 20:00</p>
+    <p style="margin-top:8px">© 2026 ASIC-FIX. Ремонт оборудования для майнинга.</p>
+  </footer>
 </div>
 
 </body>
 </html>
+
